@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { SafeAreaView, Text, StyleSheet, View, Image, Alert, TouchableOpacity, StatusBar } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, View, Image, Alert, TouchableOpacity } from 'react-native';
 import { COLORS } from '../constants';
 // import LinearGradient from 'react-native-linear-gradient'
 import { LinearGradient } from 'expo-linear-gradient';
+import Logo from '../components/common/Logo';
+import { globalStyles } from '../styles/global';
 
-const LandingScreen = () => {
+const LandingScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={globalStyles.container}>
             <LinearGradient
                 colors={[' rgba(217, 217, 217, 0)', '#DB4060']}
-                style={styles.linearGradient}
+                style={globalStyles.linearGradient}
                 start={{ x: 0, y: 0.5 }}
                 end={{ x: 1, y: 0.5 }}
             >
-                <View style={styles.childContainer}>
-                    <Image style={styles.logo}
-                        source={require('../assets/images/noma-logo.png')} />
-                    <View style={styles.contentContainer}>
+                <View style={globalStyles.childContainer}>
+                    <Logo />
+                    <View style={globalStyles.contentContainer}>
                         <Image
                             style={styles.cakeImage}
                             source={require('../assets/images/cakes/cake.png')}
@@ -27,7 +28,7 @@ const LandingScreen = () => {
                             <Text style={styles.buttonText}>Sign In</Text>
                         </TouchableOpacity>
 
-                        <Text style={styles.signupText}>Don't have an account? <Text style={{ color: "#DB4060" }} onPress={() => Alert.alert("Signed up succesfully")}>Sign Up now</Text></Text>
+                        <Text style={styles.signupText}>Don't have an account? <Text style={{ color: "#DB4060" }} onPress={() => navigation.navigate('SignUp')}>Sign Up now</Text></Text>
                     </View>
                 </View>
             </LinearGradient>
@@ -38,44 +39,7 @@ const LandingScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    // mainContainer
-    container: {
-        flex: 1,
-        width: "100%",
-        height: "100%",
-        // background: linear - gradient(253.85deg, #DB4060 - 21.73 %, rgba(217, 217, 217, 0) 95.87 %);
-        // ImageBackground:
-    },
-    // backgroundGradient
-    linearGradient: {
-        flex: 1,
-        backgroundColor: COLORS.lightWhite,
-        width: "100%",
-        height: "100%",
-        borderColor: 'green',
-        borderWidth: 2,
-        margin: 0,
-        padding: 0,
-        alignItems: 'center'
-    },
-    // holds all the content
-    childContainer: {
-        marginTop: StatusBar.currentHeight,
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-
-    logo: {
-        width: 232,
-        height: 52,
-        marginTop: 10,
-        resizeMode: 'contain'
-    },
-    contentContainer: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
+    
     cakeImage: {
         width: 270,
         height: 313,
