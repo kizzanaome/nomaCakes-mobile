@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { SafeAreaView, Text, StyleSheet, View, Image, TouchableOpacity, StatusBar, TextInput, Alert } from 'react-native';
 import { COLORS } from '../constants';
-// import LinearGradient from 'react-native-linear-gradient'
 import { LinearGradient } from 'expo-linear-gradient';
 import { globalStyles } from '../styles/global';
 import MyAppText from '../components/common/MyAppText';
 
-const SignUpScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={globalStyles.container}>
             <LinearGradient
@@ -23,21 +22,8 @@ const SignUpScreen = ({ navigation }) => {
                     </TouchableOpacity>
                     <View style={globalStyles.contentContainer}>
                         <MyAppText style={styles.headerText}>
-                            Sign Up
+                            Login
                         </MyAppText>
-
-                        <View style={globalStyles.inputView}>
-                            <Image
-                                style={globalStyles.inputIcons}
-                                source={require('../assets/images/icons/user.png')}
-                            />
-
-                            <TextInput
-                                style={globalStyles.textInput}
-                                placeholder='Name'
-                                placeholderTextColor="rgba(0,0,0,0.24)"
-                            />
-                        </View>
 
                         <View style={globalStyles.inputView}>
                             <Image
@@ -63,12 +49,12 @@ const SignUpScreen = ({ navigation }) => {
                             />
                         </View>
 
-                        <TouchableOpacity onPress={() => Alert.alert("Signed up succesfully")} style={globalStyles.button} >
-                            <Text style={globalStyles.buttonText}>Sign up</Text>
+                        <TouchableOpacity onPress={() => Alert.alert("Logged in succesfully")} style={globalStyles.button} >
+                            <MyAppText style={globalStyles.buttonText}>Login</MyAppText>
                         </TouchableOpacity>
 
 
-                        <MyAppText style={styles.signupText}>Already haven an account? <Text style={{ color: "#DB4060" }} onPress={() => navigation.navigate("Login")}>Login</Text></MyAppText>
+                        <MyAppText style={styles.signupText}>Don't have an account <Text style={{ color: "#DB4060" }} onPress={() => navigation.navigate("SignUp")}>SignUp</Text></MyAppText>
                     </View>
                 </View>
             </LinearGradient>
@@ -79,12 +65,14 @@ const SignUpScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+
+
     headerText: {
         width: 300,
         fontWeight: "400",
         fontSize: 35,
         marginTop: 70,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     signupText: {
@@ -93,8 +81,9 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 400,
         marginTop: 30,
-    }
+    },
+
 })
 
 
-export default SignUpScreen;
+export default LoginScreen;

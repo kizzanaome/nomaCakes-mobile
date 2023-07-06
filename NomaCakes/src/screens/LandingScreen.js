@@ -5,6 +5,7 @@ import { COLORS } from '../constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import Logo from '../components/common/Logo';
 import { globalStyles } from '../styles/global';
+import MyAppText from '../components/common/MyAppText';
 
 const LandingScreen = ({ navigation }) => {
     return (
@@ -22,13 +23,16 @@ const LandingScreen = ({ navigation }) => {
                             style={styles.cakeImage}
                             source={require('../assets/images/cakes/cake.png')}
                         />
-                        <Text style={styles.text}>Book yourself a cake now and arouse your taste buds for life </Text>
 
-                        <TouchableOpacity onPress={() => Alert.alert("Signed in succesfully")} style={styles.button} >
-                            <Text style={styles.buttonText}>Sign In</Text>
+                        <MyAppText style={styles.text}>
+                            Book yourself a cake now and arouse your taste buds for life
+                        </MyAppText>
+
+                        <TouchableOpacity onPress={() => navigation.navigate("Login")} style={styles.loginButton}>
+                            <MyAppText style={styles.loginButtonText}>Sign In</MyAppText>
                         </TouchableOpacity>
 
-                        <Text style={styles.signupText}>Don't have an account? <Text style={{ color: "#DB4060" }} onPress={() => navigation.navigate('SignUp')}>Sign Up now</Text></Text>
+                        <MyAppText style={styles.signUpText}>Don't have an account? <Text style={{ color: "#DB4060" }} onPress={() => navigation.navigate('SignUp')}>Sign Up now</Text></MyAppText>
                     </View>
                 </View>
             </LinearGradient>
@@ -39,7 +43,7 @@ const LandingScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    
+
     cakeImage: {
         width: 270,
         height: 313,
@@ -48,44 +52,38 @@ const styles = StyleSheet.create({
     },
     text: {
         width: 300,
-        // fontFamily:'Ubuntu'
-        fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 27,
         lineHeight: 34,
         marginTop: -15,
         textAlign: 'center',
-        color: "#5B1E3A"
     },
 
     // button 
-    button: {
+    loginButton: {
         width: 300,
         height: 64,
         borderRadius: 50,
         backgroundColor: "#DB4060",
         justifyContent: 'center',
-        marginTop: 30
+        marginTop: 30,
+
     },
-    buttonText: {
+    loginButtonText: {
         color: 'white',
         textAlign: 'center',
-        fontStyle: 'normal',
-        fontWeight: 700,
+        fontWeight: "bold",
         fontSize: 20,
-        lineHeight: 20,
         alignItems: 'center'
     },
 
-    signupText: {
+    signUpText: {
         textAlign: 'center',
         width: 245,
-        height: 17,
         fontSize: 15,
         fontWeight: 400,
-        fontStyle: 'normal',
         marginTop: 15,
-        lineHeight: 15
+
     }
 })
 

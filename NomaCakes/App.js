@@ -1,50 +1,66 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-import { COLORS } from "./src/constants/theme";
+import { COLORS, FONTS } from "./src/constants/theme";
 import LandingScreen from './src/screens/LandingScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import * as Font from "expo-font";
+import { useEffect, useState } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import Routes from './routes';
 
-const Stack = createNativeStackNavigator()
+// const Stack = createNativeStackNavigator()
+// SplashScreen.preventAutoHideAsync();
+
+// const CustomText = (props) => {
+//   const [fontLoaded, setFontLoaded] = useState(false)
+
+
+//  
+//   return (<Text style={{ ...props.style, fontFamily: 'Poppins-Regular' }}>
+//     {props.children}
+//   </Text>);
+// };
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          options={{
-            headerShown: false,
-            headerStyle: {
-              backgroundColor: COLORS.white,
-              color: COLORS.white,
-            }
-          }}
-          name="Home"
-          component={LandingScreen}
-        />
+  const [fontLoaded, setFontLoaded] = useState(false)
 
-        <Stack.Screen
-        options={{
-          headerShown:false
-        }}
-          name="SignUp"
-          component={SignUpScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        [FONTS.regular]: require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+        [FONTS.medium]: require('./assets/fonts/Poppins/Poppins-Medium.ttf'),
+        [FONTS.bold]: require('./assets/fonts/Poppins/Poppins-Bold.ttf'),
+        [FONTS.light]: require('./assets/fonts/Poppins/Poppins-Light.ttf')
+
+      })
+
+      // Text.fontFamily = 'Poppins-Regular';
 
 
-  );
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, [])
+
+  if (fontLoaded) {
+    return (<NavigationContainer>
+      <Routes />
+    </NavigationContainer>)
+  }
+
+  else {
+    return (
+
+      <Text>Loading...</Text>)
+  }
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
