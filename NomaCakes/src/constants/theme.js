@@ -1,7 +1,10 @@
 const COLORS = {
     primary: "#DB4060",
     secondary: "#5B1E3A",
-    white: "white"
+    white: "white",
+    black:"#000",
+    formOutlineColor:"#D9D9D9",
+    placeholderTextColor:"#B3B3B3"
 
 
     // tertiary: "#FF7754",
@@ -21,6 +24,7 @@ const FONTS = {
     regular: "Poppins-Regular",
     light: "Poppins-Light",
     medium: "Poppins-Medium",
+    semiBold: "Poppins-SemiBold",
     bold: "Poppins-Bold",
 };
 

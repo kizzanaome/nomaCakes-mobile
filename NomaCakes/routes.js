@@ -10,6 +10,7 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import * as Font from "expo-font";
 import { useEffect, useState } from 'react';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator()
 
@@ -17,35 +18,45 @@ export default function Routes() {
 
     return (
 
-                <Stack.Navigator>
-                    <Stack.Screen
-                        options={{
-                            headerShown: false,
-                            headerStyle: {
-                                backgroundColor: COLORS.white,
-                                color: COLORS.white,
-                            }
-                        }}
-                        name="Home"
-                        component={LandingScreen}
-                    />
+        <Stack.Navigator>
+            <Stack.Screen
+                options={{
+                    headerShown: false,
+                    headerStyle: {
+                        backgroundColor: COLORS.white,
+                        color: COLORS.white,
+                    }
+                }}
+                name="Landing"
+                component={LandingScreen}
+            />
 
-                    <Stack.Screen
-                        options={{
-                            headerShown: false
-                        }}
-                        name="SignUp"
-                        component={SignUpScreen}
-                    />
+            <Stack.Screen
+                options={{
+                    headerShown: false
+                }}
+                name="SignUp"
+                component={SignUpScreen}
+            />
 
-                    <Stack.Screen
-                        options={{
-                            headerShown: false
-                        }}
-                        name="Login"
-                        component={LoginScreen}
-                    />
-                </Stack.Navigator>
+            <Stack.Screen
+                options={{
+                    headerShown: false
+                }}
+                name="Login"
+                component={LoginScreen}
+            />
+
+            <Stack.Screen
+                options={{
+                    headerShown: false
+                }}
+                name="Home"
+                component={HomeScreen}
+            />
+
+
+        </Stack.Navigator>
     );
 }
 
