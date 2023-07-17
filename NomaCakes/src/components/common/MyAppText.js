@@ -6,7 +6,7 @@ const MyAppText = (props) => {
     return (
         <Text style={{
             ...props.style,
-            fontFamily: FONTS.regular,
+            fontFamily: props?.style?.fontFamily || FONTS.regular,
             fontStyle: 'normal',
             color: props?.style?.color || COLORS.secondary
         }}>

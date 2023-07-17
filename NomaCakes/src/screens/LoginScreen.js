@@ -15,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
                 end={{ x: 1, y: 0.5 }}
             >
                 <View style={globalStyles.childContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Landing')}>
                         <Image style={styles.logo}
                             source={require('../assets/images/noma-logo.png')}
                         />
@@ -49,7 +49,7 @@ const LoginScreen = ({ navigation }) => {
                             />
                         </View>
 
-                        <TouchableOpacity onPress={() => Alert.alert("Logged in succesfully")} style={globalStyles.button} >
+                        <TouchableOpacity onPress={() => navigation.navigate("Home")} style={globalStyles.button} >
                             <MyAppText style={globalStyles.buttonText}>Login</MyAppText>
                         </TouchableOpacity>
 

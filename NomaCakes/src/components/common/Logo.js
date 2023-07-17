@@ -3,7 +3,7 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const Logo = ({ navigation }) => {
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Landing')}>
             <Image style={styles.logo}
                 source={require('../../assets/images/noma-logo.png')}
             />

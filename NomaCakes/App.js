@@ -12,6 +12,7 @@ import * as Font from "expo-font";
 import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import Routes from './routes';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 // const Stack = createNativeStackNavigator()
 // SplashScreen.preventAutoHideAsync();
@@ -34,6 +35,7 @@ export default function App() {
       await Font.loadAsync({
         [FONTS.regular]: require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
         [FONTS.medium]: require('./assets/fonts/Poppins/Poppins-Medium.ttf'),
+        [FONTS.semiBold]: require('./assets/fonts/Poppins/Poppins-SemiBold.ttf'),
         [FONTS.bold]: require('./assets/fonts/Poppins/Poppins-Bold.ttf'),
         [FONTS.light]: require('./assets/fonts/Poppins/Poppins-Light.ttf')
 
@@ -49,9 +51,13 @@ export default function App() {
   }, [])
 
   if (fontLoaded) {
-    return (<NavigationContainer>
-      <Routes />
-    </NavigationContainer>)
+    return (
+      <PaperProvider>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </PaperProvider>
+    );
   }
 
   else {

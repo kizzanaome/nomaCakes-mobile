@@ -8,13 +8,14 @@ export const globalStyles = StyleSheet.create({
         flex: 1,
         width: "100%",
         height: "100%",
+        backgroundColor:"white"
         // background: linear - gradient(253.85deg, #DB4060 - 21.73 %, rgba(217, 217, 217, 0) 95.87 %);
-        // ImageBackground:
+        // ImageBackground: 
     },
     // backgroundGradient
     linearGradient: {
         flex: 1,
-        backgroundColor: COLORS.lightWhite,
+        backgroundColor: COLORS.white,
         width: "100%",
         height: "100%",
         margin: 0,
