@@ -1,0 +1,10 @@
+/* Rectangle 278 */
+
+position: absolute;
+width: 257px;
+height: 157px;
+left: 20px;
+top: 5px;
+
+background: url(blackForest.jpg);
+border-radius: 15px;

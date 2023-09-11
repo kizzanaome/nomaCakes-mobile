@@ -33,11 +33,11 @@ export default function App() {
   useEffect(() => {
     async function loadFont() {
       await Font.loadAsync({
-        [FONTS.regular]: require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
-        [FONTS.medium]: require('./assets/fonts/Poppins/Poppins-Medium.ttf'),
-        [FONTS.semiBold]: require('./assets/fonts/Poppins/Poppins-SemiBold.ttf'),
-        [FONTS.bold]: require('./assets/fonts/Poppins/Poppins-Bold.ttf'),
-        [FONTS.light]: require('./assets/fonts/Poppins/Poppins-Light.ttf')
+        [FONTS.regular]: require('./src/assets/fonts/Poppins/Poppins-Regular.ttf'),
+        [FONTS.medium]: require('./src/assets/fonts/Poppins/Poppins-Medium.ttf'),
+        [FONTS.semiBold]: require('./src/assets/fonts/Poppins/Poppins-SemiBold.ttf'),
+        [FONTS.bold]: require('./src/assets/fonts/Poppins/Poppins-Bold.ttf'),
+        [FONTS.light]: require('./src/assets/fonts/Poppins/Poppins-Light.ttf')
 
       })
 

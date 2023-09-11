@@ -1,15 +1,14 @@
 import * as React from 'react';
 
-import { SafeAreaView, Text, StyleSheet, View, Image, Alert, TouchableOpacity, StatusBar, TouchableNativeFeedback, Keyboard, ImageBackground, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, View, StatusBar, TouchableNativeFeedback, Keyboard, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { COLORS } from '../constants';
-// import LinearGradient from 'react-native-linear-gradient'
-import { LinearGradient } from 'expo-linear-gradient';
-import Logo from '../components/common/Logo';
 import { globalStyles } from '../styles/global';
 import MyAppText from '../components/common/MyAppText';
 import { FONTS } from '../constants/theme';
 import { NotificationIcon, SearchIcon, ViewAllIcon } from '../constants/icons';
+import CakeComponent from '../components/HomeScreenComponents/CakeComponent';
+import CakeCategoriesCard from '../components/HomeScreenComponents/CakeCategoryCard';
 
 const HomeScreen = ({ navigation }) => {
     const [rippleColor] = React.useState('#ffffff')
@@ -20,33 +19,21 @@ const HomeScreen = ({ navigation }) => {
                 Keyboard.dismiss();
             }}
             background={TouchableNativeFeedback.Ripple(
-                rippleColor
-            )}
-        >
-            <SafeAreaView style={globalStyles.container}>
-                {/* <ImageBackground style=
-                    {{
-                        width: "100%",
-                        height: "100%",
-                        resizeMode: 'cover',
-                    }} source={require('../assets/images/cakes/homePage2.png')}
+                rippleColor)}>
 
-                > */}
+            <SafeAreaView style={globalStyles.container}>
                 <View style={styles.childContainer}>
                     <View style={styles.topNav}>
                         <MyAppText style={{ color: "#B3B3B3" }}>
                             Hi, Martin!
                         </MyAppText>
-
                         <NotificationIcon />
                     </View>
-
-                    <MyAppText style={styles.headerText}>
+                    <MyAppText style={styles.headerTextStyle}>
                         Grab yourself some cake
                     </MyAppText>
                     <TextInput
                         style={{ backgroundColor: COLORS.white }}
-                        // borderRadius={15}
                         outlineColor={COLORS.formOutlineColor}
                         outlineStyle={{ borderRadius: 15, borderWidth: 1.5 }}
                         placeholder='Or type what you are looking for'
@@ -59,28 +46,50 @@ const HomeScreen = ({ navigation }) => {
                                     <SearchIcon iconColor={COLORS.placeholderTextColor} />
                                 )}
                             />
-                        }
-                    />
+                        } />
 
-                    <View style={{
-                         flexDirection: 'row', alignItems: 'center', marginTop: 27, justifyContent:"space-between"
-                    }}>
-                        <MyAppText style={{
-                            color: COLORS.black,
-                            fontFamily: FONTS.semiBold,
-                            fontSize: 20,
-                            fontWeight: 600,
-                            // lineHeight: "normal"
-                        }}>
+                    <View style={styles.popularCakesStyle}>
+                        <MyAppText style={styles.popularCakeHeaderTextStyle}>
                             Popular cake shops
                         </MyAppText>
-
                         <ViewAllIcon />
-
                     </View>
-                </View>
 
-                {/* </ImageBackground> */}
+                    <View style={styles.homeCakeImageStyle}>
+                        <ScrollView
+                            style={styles.container}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            pagingEnabled={true}
+                        >
+                            <CakeComponent />
+                            <CakeComponent />
+                            <CakeComponent />
+                        </ScrollView>
+                    </View>
+
+                    <View style={styles.popularCakesStyle}>
+                        <MyAppText style={styles.popularCakeHeaderTextStyle}>
+                            Categories
+                        </MyAppText>
+                        <ViewAllIcon />
+                    </View>
+
+                    <View style={styles.homeCakeImageStyle}>
+                        <ScrollView
+                            style={styles.container}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            pagingEnabled={true}
+                        >
+                            <CakeCategoriesCard />
+                            <CakeCategoriesCard />
+                            <CakeCategoriesCard />
+                        </ScrollView>
+                    </View>
+
+
+                </View>
             </SafeAreaView>
         </TouchableNativeFeedback>
 
@@ -101,16 +110,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 25,
-        // borderColor: "red",
-        // borderWidth: 1,
         alignItems: 'center'
+    },
 
-    },
-    bell: {
-        width: 25,
-        height: 30
-    },
-    headerText: {
+    headerTextStyle: {
         color: COLORS.black,
         fontFamily: FONTS.semiBold,
         fontSize: 35,
@@ -120,20 +123,34 @@ const styles = StyleSheet.create({
         // height:100,
         // letterSpacing: 0.37,
         marginVertical: 15
-
-
     },
-    searchView: {
-        borderWidth: 1.5,
-        borderRadius: 15,
-        color: "#B3B3B3",
+
+    popularCakesStyle: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderColor: "#D9D9D9",
-        paddingHorizontal: 20,
-        justifyContent: 'space-between'
-
+        marginTop: 27,
+        justifyContent: "space-between"
     },
+
+    popularCakeHeaderTextStyle: {
+        color: COLORS.black,
+        fontFamily: FONTS.semiBold,
+        fontSize: 20,
+        fontWeight: 600,
+        // lineHeight: "normal"
+    },
+
+    homeCakeImageStyle: {
+        marginTop: 18,
+        width: "100%",
+    },
+
+    container: {
+        width: "100%"
+    },
+
+
+
 
     searchIcon: {
         borderColor: "red",
@@ -153,12 +170,6 @@ const styles = StyleSheet.create({
         letterSpacing: 0.10
     },
 
-
-
-
-
-
-
     text: {
         width: 300,
         fontWeight: 400,
@@ -167,6 +178,8 @@ const styles = StyleSheet.create({
         marginTop: -15,
         textAlign: 'center',
     },
+
+
 
     // button 
     loginButton: {

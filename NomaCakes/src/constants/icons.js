@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { SvgXml } from 'react-native-svg';
+import starIcon from '../assets/images/icons/star';
 
 export function SearchIcon({ iconColor }) {
 
@@ -38,5 +39,16 @@ export function ViewAllIcon() {
     const ViewAllSvg = () => <SvgXml xml={viewAll} />;
 
     return <ViewAllSvg />;
+
+}
+
+export function StartIcon() {
+
+    const sIcon = starIcon
+
+
+    const StarSvg = () => <SvgXml xml={sIcon} />;
+
+    return <StarSvg />;
 
 }
